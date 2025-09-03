@@ -1,0 +1,56 @@
+# Node modules y logs
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Dependencias de lock innecesarias (elige solo la que uses)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build y dist locales
+dist
+build
+.cache
+.next
+out
+.vite
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archivos de editor/IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Tests y coverage
+coverage
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+__tests__/
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Otros archivos temporales
+*.log
+*.pid
+*.seed
+*.tgz
+*.gz
+*.zip
