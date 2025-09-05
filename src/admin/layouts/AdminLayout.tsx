@@ -1,6 +1,8 @@
-
-export const AdnminLayout = () => {
+const AdminLayout = () => {
     return (
         <div>AdnminLayout</div>
     )
 }
+
+
+export default AdminLayout;

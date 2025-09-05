@@ -2,11 +2,14 @@ import { createBrowserRouter, Navigate } from "react-router";
 import { ShopLayout } from "./shop/layouts/ShopLayout";
 import { HomePage } from "./pages/home/HomePage";
 import { ProductPage } from "./pages/product/ProductPage";
-import { AuthLayout, RegisterPage, LoginPage } from "./auth";
+import { RegisterPage, LoginPage } from "./auth";
 import { GenderPage } from "./pages/gender/GenderPage";
-import { AdminProductPage, AdminProductsPage, AdnminLayout, DashboardPage } from "./admin";
+import { AdminProductPage, AdminProductsPage, DashboardPage } from "./admin";
+import { lazy } from "react";
 
 
+const AuthLayout = lazy(() => import('./auth/layouts/AuthLayout'))
+const AdminLayout = lazy(() => import('./admin/layouts/AdminLayout'))
 
 export const appRouter = createBrowserRouter([
 
@@ -54,7 +57,7 @@ export const appRouter = createBrowserRouter([
     //Admin-Routes
     {
         path: '/admin',
-        element: <AdnminLayout />,
+        element: <AdminLayout />,
 
         children: [
             {
@@ -74,7 +77,7 @@ export const appRouter = createBrowserRouter([
 
     //Ruta no definida
     {
-        path = '*',
+        path: '*',
         element: <Navigate to='/' />
     }
 ])
