@@ -3,9 +3,9 @@ import { ShopLayout } from "./shop/layouts/ShopLayout";
 import { HomePage } from "./pages/home/HomePage";
 import { ProductPage } from "./pages/product/ProductPage";
 import { RegisterPage, LoginPage } from "./auth";
-import { GenderPage } from "./pages/gender/GenderPage";
 import { AdminProductPage, AdminProductsPage, DashboardPage } from "./admin";
 import { lazy } from "react";
+import { GenderPage } from "./pages/gender/GenderPage";
 
 
 const AuthLayout = lazy(() => import('./auth/layouts/AuthLayout'))
@@ -27,7 +27,7 @@ export const appRouter = createBrowserRouter([
                 element: <ProductPage />
             },
             {
-                path: 'gender/:gender',
+                path: 'gender',
                 element: <GenderPage />
             },
         ]
