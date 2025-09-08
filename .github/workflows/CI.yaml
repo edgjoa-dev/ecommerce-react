@@ -72,15 +72,14 @@ jobs:
       ########################################################
       # 4- Send Slack notification
       ########################################################
-      - name: Send slack notification
+      - name: Send Slack notification
         uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
             {
               "text": "🚀 Nuevo Pull Request mergeado en *${{ github.base_ref }}*\nAutor: ${{ github.actor }}\n🔗 <${{ github.event.pull_request.html_url }}|Ver Pull Request>"
             }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
       ########################################################
       # 5- Call publish artifact workflow
