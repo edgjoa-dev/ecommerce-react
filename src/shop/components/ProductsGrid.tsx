@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Filter, Grid, List } from "lucide-react"
 
 import { type Product } from "@/mock/productData.mock"
-import { FilterSidebar, ProductCard } from "./index";
+import { FilterSidebar } from "./index";
 
 interface Props {
     products: Product[];
