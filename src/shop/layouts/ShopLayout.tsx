@@ -1,9 +1,12 @@
 import { Outlet } from "react-router"
+import { CustomFooter, CustomHeader } from "../components"
 
 export const ShopLayout = () => {
     return (
-        <div>
+        <section min-h-screen bg-background>
+            <CustomHeader />
             <Outlet />
-        </div>
+            <CustomFooter />
+        </section>
     )
 }

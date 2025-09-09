@@ -31,6 +31,7 @@ jobs:
       - name: Build React Vite application
         run: yarn build
 
+
   #######################################################
   # Automatic merge to develop branch
   #######################################################
@@ -80,6 +81,7 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 
       ########################################################
       # 5- Call publish artifact workflow
