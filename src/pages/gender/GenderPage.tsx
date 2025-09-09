@@ -1,6 +1,6 @@
 
 export const GenderPage = () => {
     return (
-        <div>GenderPage</div>
+        <div>Gender</div>
     )
 }
