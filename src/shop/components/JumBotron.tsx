@@ -1,11 +1,11 @@
 
 interface Props {
-    title: string;
+    title?: string;
     subtitle?: string;
 }
 
 
-export const JumBotron = ({ title, subtitle }: Props) => {
+export const JumBotron = ({title, subtitle}: Props) => {
 
     const subtitleOptional = "Ropa y accesorios de moda para todas las edades";
 
