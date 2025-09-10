@@ -5,7 +5,7 @@ import { Filter, Grid, List } from "lucide-react"
 
 import { type Product } from "@/mock/productData.mock"
 import { FilterSidebar, ProductCard } from "./index";
-import { useSearchParams } from "react-router";
+import { useQueryFilters } from "@/hooks";
 
 interface Props {
     products: Product[];
@@ -14,19 +14,13 @@ interface Props {
 
 export const ProductsGrid = ({products}: Props) => {
 
-    const [ searchParams, setSearchParams ] = useSearchParams();
-    const viewMode = searchParams.get('viewMode') || 'grid';
+    const  {viewMode, setViewMode}  = useQueryFilters();
 
-    const handleViewChange = ( mode: 'grid' | 'list' ) => {
-        searchParams.set('viewMode', mode);
-        setSearchParams( searchParams )
-    }
-
-    const [showFilters, setShowFilters] = useState(true)
+    const [showFilters, setShowFilters] = useState(false);
 
     return (
         <section className="py-12 px-4 lg:px-8">
-            <div className="container mx-auto">
+            <div className="container mx-auto font-montserrat">
                 <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center space-x-4">
                         <h2 className="text-3xl font-light">Productos</h2>
@@ -48,7 +42,7 @@ export const ProductsGrid = ({products}: Props) => {
                             <Button
                                 variant={viewMode === 'grid' ? 'default' : 'ghost'}
                                 size="sm"
-                                onClick={() => handleViewChange('grid')}
+                                onClick={() => setViewMode('grid')}
                                 className="rounded-r-none"
                             >
                                 <Grid className="h-4 w-4" />
@@ -56,7 +50,7 @@ export const ProductsGrid = ({products}: Props) => {
                             <Button
                                 variant={viewMode === 'list' ? 'default' : 'ghost'}
                                 size="sm"
-                                onClick={() => handleViewChange('list')}
+                                onClick={() => setViewMode('list')}
                                 className="rounded-l-none"
                             >
                                 <List className="h-4 w-4" />
