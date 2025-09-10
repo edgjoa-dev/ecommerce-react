@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Filter, Grid, List } from "lucide-react"
 
 import { type Product } from "@/mock/productData.mock"
-import { FilterSidebar } from "./index";
+import { FilterSidebar, ProductCard } from "./index";
+import { useSearchParams } from "react-router";
 
 interface Props {
     products: Product[];
@@ -13,9 +14,15 @@ interface Props {
 
 export const ProductsGrid = ({products}: Props) => {
 
+    const [ searchParams, setSearchParams ] = useSearchParams();
+    const viewMode = searchParams.get('viewMode') || 'grid';
+
+    const handleViewChange = ( mode: 'grid' | 'list' ) => {
+        searchParams.set('viewMode', mode);
+        setSearchParams( searchParams )
+    }
+
     const [showFilters, setShowFilters] = useState(true)
-
-
 
     return (
         <section className="py-12 px-4 lg:px-8">
@@ -39,17 +46,17 @@ export const ProductsGrid = ({products}: Props) => {
 
                         <div className="hidden md:flex border rounded-md">
                             <Button
-                                // variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                                variant={viewMode === 'grid' ? 'default' : 'ghost'}
                                 size="sm"
-                                // onClick={() => setViewMode('grid')}
+                                onClick={() => handleViewChange('grid')}
                                 className="rounded-r-none"
                             >
                                 <Grid className="h-4 w-4" />
                             </Button>
                             <Button
-                                // variant={viewMode === 'list' ? 'default' : 'ghost'}
+                                variant={viewMode === 'list' ? 'default' : 'ghost'}
                                 size="sm"
-                                // onClick={() => setViewMode('list')}
+                                onClick={() => handleViewChange('list')}
                                 className="rounded-l-none"
                             >
                                 <List className="h-4 w-4" />
@@ -82,13 +89,13 @@ export const ProductsGrid = ({products}: Props) => {
                     )}
 
                     {/* Products Grid */}
-                    {/* <div className="flex-1">
+                    <div className="flex-1">
                         <div className={
                             viewMode === 'grid'
                                 ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                                 : "space-y-4"
                         }>
-                            {currentProducts.map((product) => (
+                            {products.map((product) => (
                                 <ProductCard
                                     key={product.id}
                                     id={product.id}
@@ -99,7 +106,7 @@ export const ProductsGrid = ({products}: Props) => {
                                 />
                             ))}
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </section>
