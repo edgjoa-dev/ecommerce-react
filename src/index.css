@@ -482,3 +482,24 @@ template {
 @theme {
   --font-montserrat: "Montserrat Alternates", sans-serif;
 }
+
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.15s ease, transform 0.15s ease;
+}
+
+.link-underline-active::after {
+  width: 80%;
+}

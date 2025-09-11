@@ -3,11 +3,14 @@ import { Search, ShoppingBag, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQueryParams } from "@/hooks/useQueryParams";
+import { Link, useParams } from "react-router";
+import { cn } from "@/lib/utils";
 
 export const CustomHeader = () => {
   const [cartCount] = useState(3);
 
   const { getParam, setParam } = useQueryParams();
+  const { gender } = useParams();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const query = getParam("query");
@@ -33,19 +36,44 @@ export const CustomHeader = () => {
 
           {/* Navigation - Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">
-              Camisetas
-            </a>
-            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">
-              Sudaderas
-            </a>
-            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">
-              Chaquetas
-            </a>
-            <a href="#" className="text-sm font-medium transition-colors hover:text-primary">
-              Accesorios
-            </a>
+            <Link
+              to="/"
+              className={cn(
+                "link-underline text-sm font-medium transition-colors hover:text-primary",
+                !gender ? "link-underline-active" : ""
+              )}
+            >
+              Todos
+            </Link>
+            <Link
+              to="/gender/men"
+              className={cn(
+                "link-underline text-sm font-medium transition-colors hover:text-primary",
+                gender === "men" ? "link-underline-active" : ""
+              )}
+            >
+              Hombres
+            </Link>
+            <Link
+              to="/gender/women"
+              className={cn(
+                "link-underline text-sm font-medium transition-colors hover:text-primary",
+                gender === "women" ? "link-underline-active" : ""
+              )}
+            >
+              Mujeres
+            </Link>
+            <Link
+              to="/gender/kids"
+              className={cn(
+                "link-underline text-sm font-medium transition-colors hover:text-primary",
+                gender === "kids" ? "link-underline-active" : ""
+              )}
+            >
+              Niños
+            </Link>
           </nav>
+
 
           {/* Search and Cart */}
           <div className="flex items-center space-x-4">
@@ -74,6 +102,18 @@ export const CustomHeader = () => {
                 </span>
               )}
             </Button>
+
+            <Link to="/auth/login" className="ml-8">
+              <Button variant="default" size="sm">
+                Login
+              </Button>
+            </Link>
+
+            <Link to="/admin">
+              <Button variant="outline" size="sm">
+                Admin
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
