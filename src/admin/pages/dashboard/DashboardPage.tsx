@@ -52,7 +52,7 @@ const performanceData = [
 
 export const DashboardPage = () => {
     return (
-        <section>
+        <section className="font-montserrat">
             {/* Welcome Section */}
             <AdminTitle title={"Dashboard"} subtitle={"Bienvenido de vuelta, Aqui puedes administrar tu negocio!"} />
 
