@@ -6,6 +6,7 @@ import { Filter, Grid, List } from "lucide-react"
 import { type Product } from "@/mock/productData.mock"
 import { FilterSidebar, ProductCard } from "./index";
 import { useQueryFilters } from "@/hooks";
+import { Link } from "react-router";
 
 interface Props {
     products: Product[];
@@ -84,6 +85,7 @@ export const ProductsGrid = ({products}: Props) => {
 
                     {/* Products Grid */}
                     <div className="flex-1">
+                    <Link to='/product/:idSlug'>
                         <div className={
                             viewMode === 'grid'
                                 ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -100,6 +102,7 @@ export const ProductsGrid = ({products}: Props) => {
                                 />
                             ))}
                         </div>
+                    </Link>
                     </div>
                 </div>
             </div>
