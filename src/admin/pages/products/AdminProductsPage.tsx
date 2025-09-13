@@ -19,16 +19,17 @@ export const AdminProductsPage = () => {
         <section className="h-screen">
             <div className="flex justify-between items-center font-montserrat">
                 <AdminTitle
-                    title={"Admin Products"}
+                    title={"Productos"}
                     subtitle={"Aquí puedes administrar tus productos."}
                 />
-
-                <Link to='/admin/product/new' className="font-montserrat">
-                    <Button>
-                        <PlusIcon />
-                        Agregar Producto
-                    </Button>
-                </Link>
+                <div className="flex justify-end mb-10 gap-4">
+                    <Link to='/admin/product/new' className="font-montserrat">
+                        <Button>
+                            <PlusIcon />
+                            Agregar Producto
+                        </Button>
+                    </Link>
+                </div>
 
             </div>
 
