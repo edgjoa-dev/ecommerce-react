@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ProductComments } from "./ProductComments";
 
 interface Product {
     id: string;
@@ -44,7 +45,7 @@ export const ProductPage = () => {
     };
 
     return (
-        <section className="h-screen font-montserrat max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section className=" font-montserrat max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* Left side - Images */}
                 <div>
@@ -71,8 +72,8 @@ export const ProductPage = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className={`aspect-square rounded-lg overflow-hidden border transition-all duration-200 ${mainImage === img
-                                        ? "border-black"
-                                        : "border-slate-200 hover:border-slate-400"
+                                    ? "border-black"
+                                    : "border-slate-200 hover:border-slate-400"
                                     }`}
                             >
                                 <img
@@ -122,8 +123,8 @@ export const ProductPage = () => {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.9 }}
                                         className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-200 ${selectedSize === size
-                                                ? "bg-black text-white border-black"
-                                                : "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
+                                            ? "bg-black text-white border-black"
+                                            : "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
                                             }`}
                                     >
                                         {size}
@@ -203,6 +204,7 @@ export const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <ProductComments />
         </section>
     );
 };
