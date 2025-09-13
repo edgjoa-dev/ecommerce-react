@@ -29,7 +29,7 @@ export const CustomHeader = () => {
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
+              <Menu  className="h-5 w-5" />
             </Button>
             <h1 className="text-xl font-semibold tracking-tight">MRKT | SHOP</h1>
           </div>

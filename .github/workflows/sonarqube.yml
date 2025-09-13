@@ -1,0 +1,72 @@
+name: SonarQube Analysis
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, reopened, synchronize]
+  push:
+    branches: [develop]
+
+jobs:
+  sonarqube-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      ########################################################
+      # 1 - Checkout del código
+      ########################################################
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Necesario para análisis completo de historial
+
+      ########################################################
+      # 2 - Configurar Node.js (para proyectos React/Vite/TS)
+      ########################################################
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      ########################################################
+      # 3 - Instalar dependencias
+      ########################################################
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      ########################################################
+      # 4 - Compilar y ejecutar tests (opcional pero recomendado)
+      ########################################################
+      - name: Build project
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test --coverage
+
+      ########################################################
+      # 5 - Ejecutar análisis SonarQube
+      ########################################################
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v1
+        with:
+          args: >
+            -Dsonar.projectKey=mi-proyecto
+            -Dsonar.organization=mi-org
+            -Dsonar.sources=src
+            -Dsonar.tests=src
+            -Dsonar.test.inclusions=**/*.test.ts,**/*.test.tsx
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      ########################################################
+      # 6 - Quality Gate (espera y falla si no pasa)
+      ########################################################
+      - name: SonarQube Quality Gate
+        uses: sonarsource/sonarqube-quality-gate-action@v1
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
