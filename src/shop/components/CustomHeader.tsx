@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Search, ShoppingBag, Menu } from "lucide-react";
+import { Search, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQueryParams } from "@/hooks/useQueryParams";
