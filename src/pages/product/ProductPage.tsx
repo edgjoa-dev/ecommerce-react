@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ProductComments } from "./ProductComments";
 
 interface Product {
     id: string;
@@ -44,7 +45,7 @@ export const ProductPage = () => {
     };
 
     return (
-        <section className="h-screen font-montserrat max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section className=" font-montserrat max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* Left side - Images */}
                 <div>
@@ -203,6 +204,7 @@ export const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <ProductComments />
         </section>
     );
 };

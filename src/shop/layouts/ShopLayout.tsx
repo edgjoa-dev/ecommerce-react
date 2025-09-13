@@ -3,7 +3,7 @@ import { CustomFooter, CustomHeader } from "../components"
 
 export const ShopLayout = () => {
     return (
-        <section className="min-h-screen bg-background">
+        <section className="flex flex-col justify-between bg-background">
             <CustomHeader />
             <Outlet />
             <CustomFooter />
