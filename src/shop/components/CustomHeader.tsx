@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
-import { Search, ShoppingBag, Menu } from "lucide-react";
+import { Search, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { Link, useParams } from "react-router";
 import { cn } from "@/lib/utils";
+import { CustomLogo } from "@/components/custom";
 
 export const CustomHeader = () => {
   const [cartCount] = useState(3);
@@ -27,12 +28,7 @@ export const CustomHeader = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-            <h1 className="text-xl font-semibold tracking-tight">MRKT | SHOP</h1>
-          </div>
+            <CustomLogo subtitle={`${gender}`} />
 
           {/* Navigation - Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
