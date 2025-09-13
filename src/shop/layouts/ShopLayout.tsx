@@ -1,9 +1,12 @@
 import { Outlet } from "react-router"
+import { CustomFooter, CustomHeader } from "../components"
 
 export const ShopLayout = () => {
     return (
-        <div>
+        <section className="flex flex-col justify-between bg-background">
+            <CustomHeader />
             <Outlet />
-        </div>
+            <CustomFooter />
+        </section>
     )
 }
