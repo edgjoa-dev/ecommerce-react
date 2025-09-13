@@ -71,8 +71,8 @@ export const ProductPage = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className={`aspect-square rounded-lg overflow-hidden border transition-all duration-200 ${mainImage === img
-                                        ? "border-black"
-                                        : "border-slate-200 hover:border-slate-400"
+                                    ? "border-black"
+                                    : "border-slate-200 hover:border-slate-400"
                                     }`}
                             >
                                 <img
@@ -122,8 +122,8 @@ export const ProductPage = () => {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.9 }}
                                         className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-200 ${selectedSize === size
-                                                ? "bg-black text-white border-black"
-                                                : "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
+                                            ? "bg-black text-white border-black"
+                                            : "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
                                             }`}
                                     >
                                         {size}
